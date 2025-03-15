@@ -51,7 +51,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.40432, 2.04444)
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.2, 0, 0, 0, -2.18557e-08, -0.2, 0, 0.5, -8.74228e-09, 0, 0, -0.68544)
 mesh = SubResource("CylinderMesh_0vx5r")
-
-[node name="Label" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
