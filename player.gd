@@ -6,6 +6,8 @@ const JUMP_VELOCITY = 4.5
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+@export var fuckass = 10
+
 # Set by the authority, synchronized on spawn.
 @export var player := 1 :
 	set(id):
@@ -27,12 +29,15 @@ func _ready():
 
 
 func _physics_process(delta):
+	$Label.text = str(fuckass)
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 
 	# Handle Jump.
 	if input.jumping and is_on_floor():
+		fuckass -= 1
 		velocity.y = JUMP_VELOCITY
 
 	# Reset jump state.

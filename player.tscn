@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cw8w6clmxedi6"]
+[gd_scene load_steps=8 format=3 uid="uid://cw8w6clmxedi6"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_hwwnj"]
 [ext_resource type="Script" path="res://player_input.gd" id="2_ju3m6"]
@@ -13,6 +13,9 @@ properties/1/replication_mode = 1
 properties/2/path = NodePath(".:velocity")
 properties/2/spawn = true
 properties/2/replication_mode = 1
+properties/3/path = NodePath(".:fuckass")
+properties/3/spawn = true
+properties/3/replication_mode = 1
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_hoavk"]
 properties/0/path = NodePath(".:direction")
@@ -22,6 +25,8 @@ properties/0/replication_mode = 1
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_37qaq"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_jab13"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_0vx5r"]
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_hwwnj")
@@ -42,3 +47,11 @@ mesh = SubResource("CapsuleMesh_jab13")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.40432, 2.04444)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, -2.18557e-08, -0.2, 0, 0.5, -8.74228e-09, 0, 0, -0.68544)
+mesh = SubResource("CylinderMesh_0vx5r")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
