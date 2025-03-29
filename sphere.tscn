@@ -1,12 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://c6br8h3si2ypg"]
+[gd_scene load_steps=6 format=3 uid="uid://c6br8h3si2ypg"]
+
+[ext_resource type="Script" path="res://sphere.gd" id="1_73n7v"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_mp5c4"]
 friction = 0.0
 bounce = 1.0
 
-[sub_resource type="SphereMesh" id="SphereMesh_deuj3"]
+[sub_resource type="SphereMesh" id="SphereMesh_dwytn"]
+radius = 0.1
+height = 0.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_h6jr2"]
+radius = 0.1
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_q1o6k"]
 properties/0/path = NodePath(".:linear_velocity")
@@ -24,12 +29,14 @@ properties/3/replication_mode = 1
 
 [node name="Sphere" type="RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.42886, 0)
-collision_layer = 2
-collision_mask = 2
+collision_mask = 3
 physics_material_override = SubResource("PhysicsMaterial_mp5c4")
+contact_monitor = true
+max_contacts_reported = 2
+script = ExtResource("1_73n7v")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("SphereMesh_deuj3")
+mesh = SubResource("SphereMesh_dwytn")
 skeleton = NodePath("../CollisionShape3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -37,3 +44,5 @@ shape = SubResource("SphereShape3D_h6jr2")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_q1o6k")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
